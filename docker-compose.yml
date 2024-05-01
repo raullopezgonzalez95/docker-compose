@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  mysql-local:
+    image: mysql:latest
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_USER=someuser
+      - MYSQL_PASSWORD=my-secret-pwdsomeuser
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+    volumes:
+      - mysql-data:/var/lib/mysql
+  sql-server-local:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=MyPass@word
+    volumes:
+      - sql-server-data:/var/opt
+
+volumes:
+  mysql-data:
+  sql-server-data:
